@@ -304,7 +304,7 @@ solnp = function(pars, fun, eqfun = NULL, eqB = NULL, ineqfun = NULL, ineqLB = N
 				rho = 5 * max( rho, sqrt(tol) )
 			}
 			
-			if( max( c( tol + tt[ 1 ], tt[ 2 ] - tt[ 3 ] ) ) <= 0 ) { 
+			if(!is.na(tt[ 1 ]) & !is.na(tt[ 2 ]) & !is.na(tt[ 3 ]) & (max( c( tol + tt[ 1 ], tt[ 2 ] - tt[ 3 ] ) ) <= 0) ) { 
 				lambda = 0
 				hessv = diag( diag ( hessv ) )
 			}
