@@ -312,7 +312,7 @@ solnp = function(pars, fun, eqfun = NULL, eqB = NULL, ineqfun = NULL, ineqLB = N
 			tt[ 2 ] = tt[ 3 ]
 		}
 		
-		if( .vnorm( c(tt[ 1 ], tt[ 2 ]) ) <= tol ) {
+		if(!is.na(tt[ 1 ]) & !is.na(tt[ 2 ]) & (.vnorm( c(tt[ 1 ], tt[ 2 ]) ) <= tol) ) {
 			maxit = .solnp_iter
 		}
 		
@@ -329,7 +329,7 @@ solnp = function(pars, fun, eqfun = NULL, eqB = NULL, ineqfun = NULL, ineqLB = N
 		convergence = 2
 		if( trace ) cat( paste( "\nsolnp--> Solution not reliable....Problem Inverting Hessian.\n", sep="" ) )
 	} else{
-		if( .vnorm( c(tt[ 1 ], tt[ 2 ]) ) <= tol ) {
+		if( !is.na(tt[ 1 ]) & !is.na(tt[ 2 ]) & (.vnorm( c(tt[ 1 ], tt[ 2 ]) ) <= tol) ) {
 			convergence = 0
 			if( trace ) cat( paste( "\nsolnp--> Completed in ", .solnp_iter, " iterations\n", sep="" ) )
 		} else{
